@@ -1,0 +1,14 @@
+.nav {
+  grid-area: n;
+  background-color:#e9ebee;
+  border-radius: 1px;
+}
+.item{
+  padding: 5px;
+}
+.item .active {
+  color: blue;
+ }
+ .friends{
+  margin-left: 70px;
+ }

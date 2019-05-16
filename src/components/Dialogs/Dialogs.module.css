@@ -1,0 +1,37 @@
+.dialog{
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  padding: 5px;
+
+}
+.users img {
+  border-radius: 30px;
+  padding: 10px;
+    height: 40px;
+    width: 40px;
+}
+.usersname{
+  padding: 20px;
+  margin-left: 40px;
+  margin-top: -70px;
+  text-decoration:none;
+}
+
+.MessageImg{
+  padding: 10px;
+  margin-left: 120px;
+
+}
+.message{
+  margin-left: 70px;
+  margin-top: -40px;
+}
+.MessageImg img {
+  height: 40px;
+  width: 40px;
+}
+
+.addMessage{
+  padding: 10px;
+  margin-left: 120px;
+}
