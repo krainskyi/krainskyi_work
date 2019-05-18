@@ -1,10 +1,7 @@
 import profileReducer from './profile-reducer';
 import dialogsReducer from './dialogs-reducer';
 
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
-const ADD_MESSAGE ='ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE ='UPDATE-NEW-MESSAGE';
+
 
 let store = {
     _state: {
@@ -55,13 +52,8 @@ let store = {
     }
 }
 
-export const addPostActionCreator = () => ({ type: 'ADD-POST' });
-export const updateOnPostChange = (text) =>
-    ({ type: 'UPDATE-NEW-POST', newText: text });
 
-export const addMessageActionCreator = () => ({ type: 'ADD-MESSAGE' });//add dialogs message
-export const updateOnMessageChange = (text) =>
-    ({ type: 'UPDATE-NEW-MESSAGE', newText: text });
+
 
 
 export default store;
