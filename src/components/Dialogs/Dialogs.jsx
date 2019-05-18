@@ -18,7 +18,7 @@ const Dialogs = (props) => {
             <div>
                 {MessageData}
                 <AddDialogs dispatch={props.dispatch}
-                 newMessageText={props.state.newMessageText}/>
+                    newMessageText={props.state.newMessageText} />
             </div>
         </div>
     );

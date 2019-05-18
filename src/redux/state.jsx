@@ -1,5 +1,11 @@
+import profileReducer from './profile-reducer';
+import dialogsReducer from './dialogs-reducer';
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
+const ADD_MESSAGE ='ADD-MESSAGE';
+const UPDATE_NEW_MESSAGE ='UPDATE-NEW-MESSAGE';
+
 let store = {
     _state: {
 
@@ -25,7 +31,7 @@ let store = {
             user: [
                 { id: 1, name: 'Yura' },
                 { id: 2, name: 'Lana' },
-                { id: 3, name: 'Sasha' },
+                { id: 3, name: 'Sasha'},
                 { id: 4, name: 'Igor' },
                 { id: 5, name: 'Boby' }
             ],
@@ -42,33 +48,10 @@ let store = {
         this._callSubscriber = observer;
     },
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                like: 0,
-                dislike: 0
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._callSubscriber(this._state);
 
-        } else if (action.type === 'UPDATE-NEW-POST') {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state);
-
-        } else if (action.type === 'ADD-MESSAGE') { // add dialogs message
-            let newMessage = {
-                message: this._state.dialogsPage.newMessageText,
-            };
-            this._state.dialogsPage.Message.push(newMessage);
-            this._state.dialogsPage.newMessageText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === 'UPDATE-NEW-MESSAGE') { //add dialogs message
-            this._state.dialogsPage.newMessageText = action.newText;
-            this._callSubscriber(this._state);
-
-        }
     }
 }
 

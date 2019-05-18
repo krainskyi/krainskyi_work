@@ -1,24 +1,22 @@
 import React from 'react';
 import s from './Dialogs.module.css';
-import {addMessageActionCreator,updateOnMessageChange} from '../../redux/state';
+import {addMessageActionCreator,updateOnMessageChange} from '../../redux/dialogs-reducer';
 
 
 
 const AddDialogs = (props) => {
 
-    let newMessageElement = React.createRef();
     let addMessage = ()=>{
         props.dispatch(addMessageActionCreator());
     }
-    let onMessageChange =()=>{
-        let text = newMessageElement.current.value;
+    let onMessageChange =(e)=>{
+        let text = e.target.value;
         props.dispatch(updateOnMessageChange(text));
     }
   
 
     return (<div className={s.addMessage}>
-        <textarea onChange={onMessageChange} ref={newMessageElement}
-                    value={props.newMessageText}/>
+        <textarea onChange={onMessageChange} value={props.newMessageText}/>
         <div>
         <button  onClick={addMessage}>Push message</button>
             </div>

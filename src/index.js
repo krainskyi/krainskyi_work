@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import store from './redux/state';
 
 
-export let rerenderEntireTree = (state) => {
+ let rerenderEntireTree = (state) => {
     ReactDOM.render(
         <BrowserRouter>
             <App state={state} dispatch={store.dispatch.bind(store)}    />
