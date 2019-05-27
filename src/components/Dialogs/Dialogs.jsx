@@ -2,14 +2,25 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import Users from './UsersImg';
 import MessageImage from './MessageImg';
-import AddDialogs from './AddDialogs';
 
 const Dialogs = (props) => {
+    debugger;
+
     let MessageData =
-        props.state.Message.map(m => <MessageImage message={m.message} />);
+        props.Message.map(m => <MessageImage message={m.message} key={m.id}/>);
 
     let DialogData =
-        props.state.user.map(d => <Users name={d.name} id={d.id} />);
+        props.user.map(d => <Users name={d.name} key={d.id} id={d.id} />);
+    
+        let newPostElement=React.createRef();
+
+    let onAddMessage = () => {
+        props.addMessage();
+    }
+    let onMessageChange = () => {
+        let text = newPostElement.current.value;
+        props.onMessageChangeText(text);
+    }
     return (
         <div className={s.dialog}>
             <div >
@@ -17,9 +28,13 @@ const Dialogs = (props) => {
             </div>
             <div>
                 {MessageData}
-                <AddDialogs dispatch={props.dispatch}
-                    newMessageText={props.state.newMessageText} />
             </div>
+            <div>
+            <textarea onChange={onMessageChange} value={props.newMessageText}
+                ref={newPostElement} />
+                <button onClick={onAddMessage}>Push message</button>
+            </div>
+            
         </div>
     );
 }

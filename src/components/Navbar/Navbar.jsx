@@ -5,9 +5,8 @@ import Users from './../Dialogs/UsersImg';
 
 
 const Navbar = (props) => {
-  debugger;
   let onlineData= 
-  props.state.user .map(u=><Users name={u.name} id={u.id=1}/> );
+  props.user .map(u=><Users name={u.name} id={u.id=1}/> );
   
   return (
     <nav className={s.nav}>
