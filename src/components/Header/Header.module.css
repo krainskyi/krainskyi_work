@@ -31,3 +31,9 @@ width: 300px;
 height: 20px;
 margin: 15px;
 }
+.loginBlock{
+  float: right;
+}
+.loginBlock a{
+  color: white;
+}

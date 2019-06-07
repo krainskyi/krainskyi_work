@@ -11,17 +11,17 @@ import NavbarContainer from './components/Navbar/NavbarContainer';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
 
 
 const App = (props) => {
-  
   return (
        <BrowserRouter>
       <div className='app-wrapper' >
-        <Header />
+        <HeaderContainer />
         <Route render={() => <NavbarContainer store={props.store} />} />
         <div className='app-wrapper-content'>
-          <Route path='/profile' render={() => <ProfileContainer
+          <Route path='/profile/:userId?' render={() => <ProfileContainer
           store={props.store} />} />
           <Route path='/dialogs' render={() =>
           <DialogsContainer store={props.store}/>} />
@@ -29,7 +29,7 @@ const App = (props) => {
           <Route path='/news' render={() => <News />} />
           <Route path='/music' render={() => <Music />} />
           <Route path='/settings' render={() => <Settings />} />
-          <Route path='/profile' render={() => <Header />} />
+          <Route path='/profile/' render={() => <Header />} />
         </div>
       </div>
     </BrowserRouter>
