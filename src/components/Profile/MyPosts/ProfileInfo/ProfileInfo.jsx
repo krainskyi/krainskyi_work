@@ -1,6 +1,8 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
 import Preloader from '../../../common/Preloader/Preloader';
+import userPhoto from '../../../../assets/images/user.png';
+import frontPhoto from '../../../../assets/images/frontPhoto.png';
 
 const ProfileInfo = (props) => {
 
@@ -11,11 +13,14 @@ const ProfileInfo = (props) => {
   return (
     <div >
       <div className={s.content}>
-        <img src='http://www.photoplato.com/photoplato/23751-free-large-desktop-wallpaper.png' />
+
+        <img alt ='' src={frontPhoto} />
       </div>
       <div >
         <div >
-          <img alt='' src={props.profile.photos.large} />
+          <div className={s.profilePhoto}>
+          <img alt='' src={props.profile.photos.large != null ? props.profile.photos.large : userPhoto}   />
+          </div>
           <div className={s.profile}>
             <div>
               My name: {props.profile.fullName}

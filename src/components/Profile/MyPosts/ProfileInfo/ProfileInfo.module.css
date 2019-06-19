@@ -5,3 +5,7 @@
 .profile {
     font-weight: bold;
 }
+.profilePhoto img {
+    height: 100;
+    width: 160px;
+}
