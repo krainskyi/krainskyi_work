@@ -1,0 +1,32 @@
+.icon {
+    width: 1200px;
+}
+.profilePic {
+    border-radius: 150px;
+    width: 300px;
+    padding-right: 10px;
+    margin-right: 100px;
+}
+.text {
+    margin-left: 50px;
+    grid-area: h;
+    padding: .5em;
+  
+}
+.style {
+text-align:center;
+}
+.grid{
+    display: grid;
+    background-color: aqua;
+    grid-area: n;
+}
+.grid2{
+    grid-area: h;
+    font-size: 5vw;
+    padding: .5em;
+    background: gold;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration:underline;
+  }
