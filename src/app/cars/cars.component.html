@@ -41,28 +41,29 @@
           class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
         </div>
       </div>
+      <div>
+          <label> Стан авто :</label>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input  type="radio" id="customRadioInline1" class="custom-control-input" name="customRadioInline1"
+              [value]="true" [(ngModel)]="car.used">
+            <label class="custom-control-label" for="customRadioInline1">Used</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="customRadioInline2" class="custom-control-input" name="customRadioInline1"
+             [value]="false" [(ngModel)]="car.used">
+            <label class="custom-control-label" for="customRadioInline2">New</label>
+          </div>
+        </div>
 
       <div class="input-group input-group-sm mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-sm">Рік авто :</span>
-          <input type="number"   placeholder="Рік авто"  name="year" [(ngModel)]="car.year"
+          <input type="number"   placeholder="Рік авто"  name="year" [(ngModel)]="car.year" [disabled]="!car.used"
           class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
         </div>
 
       </div>
-      <div>
-        <label> Стан авто :</label>
-        <div class="custom-control custom-radio custom-control-inline">
-          <input type="radio" id="customRadioInline1" class="custom-control-input" name="customRadioInline1"
-            [value]="true" [(ngModel)]="car.used">
-          <label class="custom-control-label" for="customRadioInline1">Used</label>
-        </div>
-        <div class="custom-control custom-radio custom-control-inline">
-          <input type="radio"  id="customRadioInline2" name="customRadioInline1" class="custom-control-input"
-            name="customRadioInline1" [value]="false" [(ngModel)]="car.used">
-          <label class="custom-control-label" for="customRadioInline2">New</label>
-        </div>
-      </div>
+      
       <p><button class="btn btn-primary btn-sm" type="submit">Зберегти</button></p>
       <ul>
         <div>
@@ -79,7 +80,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let car of cars; let i = index" [appCarsDirect]="'orange'" [car]="car">
-                <th scope="row">#</th>
+                <th scope="row">{{i+1}}</th>
                 <td>{{car.brand | uppercase}}</td>
                 <td>{{car.year}}</td>
                 <td>{{car.price }}$</td>
