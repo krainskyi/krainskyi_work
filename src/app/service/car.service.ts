@@ -9,15 +9,17 @@ export class CarService {
   public addCarReject;
   constructor() { }
 
+  
+
   public addCar(newCar) {
+    
     new Promise((resolve, reject) => {
-
-
+      
     const item = { brand: newCar.brand, price: newCar.price, year: newCar.year, used: newCar.used };
     if (!newCar.used) {
       item.year = '2019';
-      
     }
+   
     if (item) {
       resolve(item);
     }
@@ -30,9 +32,15 @@ export class CarService {
     newCar.used = '';
     newCar.year = '';
   }).then(this.addCarResolve, this.addCarReject)
+  
 }
+
   deleteCar(index) {
     this.cars.splice(index, 1)
   };
+  
+// inputDisable(){
+//   setTimeout(()=>{this.addCar.newCar == true}, 2000)
+// }
 
 }

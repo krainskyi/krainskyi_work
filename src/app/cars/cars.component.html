@@ -1,72 +1,99 @@
+<div class="row">
+  <div class="col-12">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-5">
+              {{world}}
+            </div>
+            <div class="col-md-5">
+              {{translation}}
+            </div>
+            <div class="col-md-2" class="panel panel-primary" [ngStyle]="{'background-color':status? 'green' : 'red'}">
+              <span>{{getWorldStatus()}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <h1>My Cars</h1>
 
 <form #userForm="ngForm" (ngSubmit)="carPush(car)">
-  <div>
+  <div class="container-fluid">
     <div>
       <div ngModelGroup="cars" class="input-group input-group-sm mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-sm">Марка авто :</span>
-          <input type="text" placeholder="марка авто" name="brand" [(ngModel)]="car.brand" class="form-control"
-            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input type="text" placeholder="Марка авто" name="brand" [(ngModel)]="car.brand"
+          class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
         </div>
       </div>
-
-      <div>
+      
+      <div class="input-group input-group-sm mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-sm">Ціна авто :</span>
-          <input type="number" placeholder="ціна авто" name="price" [(ngModel)]="car.price" class="form-control"
-            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+          <input type="number" placeholder="Ціна авто" name="price" [(ngModel)]="car.price" 
+          
+          class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
         </div>
       </div>
 
-      <div>
+      <div class="input-group input-group-sm mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-sm">Рік авто :</span>
-          <input type="number" placeholder="рік авто" name="year" [(ngModel)]="car.year" class="form-control"
-            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-        </div>
-      </div>
-      <div class="form-status">
-        <label>Стан авто:</label>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" id="true" name="used" [value]="true" [(ngModel)]="car.used">
-          <label class="form-check-label">Used</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" id="false" name="used" [value]="false" [(ngModel)]="car.used">
-          <label class="form-check-label">New</label>
+          <input type="number"   placeholder="Рік авто"  name="year" [(ngModel)]="car.year"
+          class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
         </div>
 
-        <p><button class="btn btn-primary btn-sm" type="submit">Зберегти</button></p>
-        <ul>
-          <div>
-            <table class="table table-sm">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Brand</th>
-                  <th scope="col">Year</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">Used</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let car of cars; let i = index" [appCarsDirect]="'orange'" [car]="car">
-                  <th scope="row">#</th>
-                  <td>{{car.brand | uppercase}}</td>
-                  <td>{{car.year}}</td>
-                  <td>{{car.price }}$</td>
-                  <td>{{car.used}}</td>
-                  <div>
-                    <button class="btn btn-outline-danger" type="button" (click)="carDelete(car, i)">Delete</button>
-                  </div>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </ul>
       </div>
+      <div>
+        <label> Стан авто :</label>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" id="customRadioInline1" class="custom-control-input" name="customRadioInline1"
+            [value]="true" [(ngModel)]="car.used">
+          <label class="custom-control-label" for="customRadioInline1">Used</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio"  id="customRadioInline2" name="customRadioInline1" class="custom-control-input"
+            name="customRadioInline1" [value]="false" [(ngModel)]="car.used">
+          <label class="custom-control-label" for="customRadioInline2">New</label>
+        </div>
+      </div>
+      <p><button class="btn btn-primary btn-sm" type="submit">Зберегти</button></p>
+      <ul>
+        <div>
+          <h3 class="text-center">List cars</h3>
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Year</th>
+                <th scope="col">Price</th>
+                <th scope="col">Used</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let car of cars; let i = index" [appCarsDirect]="'orange'" [car]="car">
+                <th scope="row">#</th>
+                <td>{{car.brand | uppercase}}</td>
+                <td>{{car.year}}</td>
+                <td>{{car.price }}$</td>
+                <td>{{car.used}}</td>
+                <div>
+                  <button class="btn btn-outline-danger" type="button" (click)="carDelete(car, i)">Delete</button>
+                </div>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ul>
     </div>
+
   </div>
 
 </form>
